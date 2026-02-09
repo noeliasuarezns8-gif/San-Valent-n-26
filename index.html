@@ -1,63 +1,92 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>San Valentín 💘</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>San Valentín 💖</title>
 
   <style>
     body {
       margin: 0;
       height: 100vh;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      background: linear-gradient(135deg, #ff5f9e, #ff85b3);
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: Arial, sans-serif;
-      color: white;
-      text-align: center;
+      font-family: 'Arial', sans-serif;
       overflow: hidden;
     }
 
     .card {
       background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 25px;
       padding: 30px 20px;
-      border-radius: 20px;
+      text-align: center;
       width: 90%;
       max-width: 350px;
+      color: white;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
 
     h1 {
-      font-size: 26px;
-      margin-bottom: 10px;
-    }
-
-    #gif {
-      width: 180px;
-      margin: 15px auto 20px;
-      display: block;
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-
-    button {
-      padding: 15px 25px;
-      font-size: 18px;
-      border-radius: 30px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    #yes {
-      background: #ff4d6d;
-      color: white;
+      font-size: 1.8rem;
       margin-bottom: 15px;
     }
 
+    img.gif {
+      width: 200px;
+      max-width: 80%;
+      margin: 15px auto;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .buttons {
+      position: relative;
+      height: 120px;
+      margin-top: 20px;
+    }
+
+    button {
+      border: none;
+      border-radius: 30px;
+      padding: 12px 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      position: absolute;
+    }
+
+    #yes {
+      background: #fff;
+      color: #ff5f9e;
+      left: 20%;
+      bottom: 10px;
+    }
+
     #no {
-      background: white;
-      color: #ff4d6d;
+      background: #ff2f6d;
+      color: white;
+      right: 20%;
+      bottom: 10px;
+    }
+
+    #foto-final {
+      display: none;
+      max-width: 80%;
+      border-radius: 20px;
+      margin-top: 20px;
+      animation: aparecer 1s ease forwards;
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
   </style>
 </head>
@@ -65,55 +94,65 @@
 <body>
 
   <div class="card" id="card">
-    <h1>¿Quieres ser mi San Valentín? 💘</h1>
+    <h1 id="pregunta">¿Quieres ser mi San Valentín? 💘</h1>
 
-   <img
-  id="gif"
-  src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbjI5MHZpeTJxOWgzc2NkMmJtbXQyeWQ5OG9hOW1meG83cnh2bjhlNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/zGhCF1Dbsv3WGgjqaA/giphy.gif"
-  alt="Love gif"
-/>
+    <!-- GIF -->
+    <img 
+      src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbjI5MHZpeTJxOWgzc2NkMmJtbXQyeWQ5OG9hOW1meG83cnh2bjhlNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/zGhCF1Dbsv3WGgjqaA/giphy.gif"
+      class="gif"
+      id="gif"
+      alt="Gif romántico"
+    >
 
-    <button id="yes">Sí 💖</button><br><br>
-    <button id="no">No 💔</button>
+    <div class="buttons">
+      <button id="yes">Sí 💖</button>
+      <button id="no">No 😈</button>
+    </div>
+
+    <!-- TU FOTO (oculta al inicio) -->
+    <img 
+      id="foto-final"
+      src="https://drive.google.com/uc?export=view&id=15PrSj41T2ZevmetWffJ7ddee0ldtEnzp"
+      alt="Mi foto 💕"
+    >
   </div>
 
   <script>
     const noBtn = document.getElementById("no");
     const yesBtn = document.getElementById("yes");
-    let scale = 1;
+    const card = document.getElementById("card");
+    const pregunta = document.getElementById("pregunta");
+    const gif = document.getElementById("gif");
+    const foto = document.getElementById("foto-final");
 
-    function moveNo() {
-      const maxX = window.innerWidth - noBtn.offsetWidth;
-      const maxY = window.innerHeight - noBtn.offsetHeight;
+    // BOTÓN NO IMPOSIBLE 😈
+    noBtn.addEventListener("mouseover", moverNo);
+    noBtn.addEventListener("touchstart", moverNo);
 
-      const x = Math.random() * maxX;
-      const y = Math.random() * maxY;
+    function moverNo() {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
 
-      scale -= 0.07;
-      if (scale < 0.25) scale = 0.25;
-
-      noBtn.style.position = "fixed";
       noBtn.style.left = x + "px";
       noBtn.style.top = y + "px";
+
+      const scale = Math.random() * 0.4 + 0.4;
       noBtn.style.transform = `scale(${scale})`;
     }
 
-    noBtn.addEventListener("mouseover", moveNo);
-    noBtn.addEventListener("touchstart", moveNo);
-
+    // BOTÓN SÍ 💖
     yesBtn.addEventListener("click", () => {
-      const gif = document.getElementById("gif");
-      if (gif) {
-        gif.style.opacity = "0";
-        gif.style.transform = "scale(0.8)";
-      }
+      gif.style.opacity = "0";
+      gif.style.transform = "scale(0.8)";
 
       setTimeout(() => {
-        document.body.innerHTML =
-          "<h1 style='color:white;text-align:center;margin-top:40vh'>Gracias por ser mi mejor San Valentín 💕</h1>";
+        pregunta.innerHTML = "Gracias por ser mi mejor San Valentín 💕";
+        foto.style.display = "block";
       }, 500);
     });
   </script>
 
 </body>
 </html>
+
+
