@@ -1,149 +1,129 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>San Valentín 💖</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>San Valentín 💖</title>
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(135deg, #ff5f9e, #ff85b3);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      overflow: hidden;
-    }
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff5f9e, #ff85b3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
 
-    .card {
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(10px);
-      border-radius: 25px;
-      padding: 30px 20px;
-      text-align: center;
-      width: 90%;
-      max-width: 360px;
-      color: white;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      position: relative;
-    }
+.card {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  padding: 25px;
+  text-align: center;
+  width: 320px;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  position: relative;
+}
 
-    h1 {
-      font-size: 1.8rem;
-      margin-bottom: 15px;
-    }
+h1 {
+  margin-bottom: 15px;
+}
 
-    .gif {
-      width: 200px;
-      max-width: 80%;
-      margin: 15px auto;
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
+.gif {
+  width: 200px;
+  margin: 15px auto;
+}
 
-    .buttons {
-      margin-top: 20px;
-    }
+.buttons {
+  margin-top: 20px;
+  position: relative;
+  height: 100px;
+}
 
-    button {
-      border: none;
-      border-radius: 30px;
-      padding: 12px 25px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
+button {
+  border: none;
+  border-radius: 30px;
+  padding: 12px 25px;
+  font-size: 1rem;
+  cursor: pointer;
+}
 
-    #yes {
-      background: white;
-      color: #ff5f9e;
-      font-weight: bold;
-    }
+#yes {
+  background: white;
+  color: #ff5f9e;
+  font-weight: bold;
+}
 
-    #no {
-      background: #ff2f6d;
-      color: white;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-    }
+#no {
+  background: #ff2f6d;
+  color: white;
+  position: absolute;
+  left: 120px;
+  top: 50px;
+}
 
-    #foto-final {
-      display: none;
-      max-width: 85%;
-      border-radius: 20px;
-      margin-top: 20px;
-      animation: aparecer 1s ease forwards;
-    }
-
-    @keyframes aparecer {
-      from {
-        opacity: 0;
-        transform: scale(0.9);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-  </style>
+#foto-final {
+  display: none;
+  width: 100%;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="card">
-    <h1 id="pregunta">¿Quieres ser mi San Valentín? 💘</h1>
+<div class="card">
+  <h1 id="pregunta">¿Quieres ser mi San Valentín? 💘</h1>
 
-    <!-- GIF -->
-    <img
-      id="gif"
-      class="gif"
-      src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbjI5MHZpeTJxOWgzc2NkMmJtbXQyeWQ5OG9hOW1meG83cnh2bjhlNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/zGhCF1Dbsv3WGgjqaA/giphy.gif"
-      alt="Gif amor"
-    >
+  <img
+    id="gif"
+    class="gif"
+    src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbjI5MHZpeTJxOWgzc2NkMmJtbXQyeWQ5OG9hOW1meG83cnh2bjhlNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/zGhCF1Dbsv3WGgjqaA/giphy.gif"
+  >
 
-    <!-- BOTONES -->
-    <div class="buttons">
-      <button id="yes">Sí 💖</button>
-    </div>
-
+  <div class="buttons">
+    <button id="yes">Sí 💖</button>
     <button id="no">No 😈</button>
-
-    <!-- FOTO FINAL -->
-    <img
-      id="foto-final"
-      src="https://raw.githubusercontent.com/noeliasuarezns8-gif/San-Valent-n-26/main/8D36F21F-1426-44EF-BC62-F4D0C898D3EB.jpg"
-      alt="Mi foto 💕"
-    >
   </div>
 
-  <script>
-    const noBtn = document.getElementById("no");
-    const yesBtn = document.getElementById("yes");
-    const gif = document.getElementById("gif");
-    const pregunta = document.getElementById("pregunta");
-    const foto = document.getElementById("foto-final");
+  <img
+    id="foto-final"
+    src="https://raw.githubusercontent.com/noeliasuarezns8-gif/San-Valent-n-26/main/8D36F21F-1426-44EF-BC62-F4D0C898D3EB.jpg"
+  >
+</div>
 
-    // El NO huye 😈
-    function moverNo() {
-      const x = Math.random() * (window.innerWidth - 100);
-      const y = Math.random() * (window.innerHeight - 50);
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
-    }
+<script>
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const gif = document.getElementById("gif");
+const pregunta = document.getElementById("pregunta");
+const foto = document.getElementById("foto-final");
 
-    noBtn.addEventListener("mouseover", moverNo);
-    noBtn.addEventListener("touchstart", moverNo);
+// NO se mueve
+noBtn.addEventListener("mouseover", mover);
+noBtn.addEventListener("touchstart", mover);
 
-    // Al decir SÍ 💖
-    yesBtn.addEventListener("click", () => {
-      pregunta.innerHTML = "Gracias por ser mi mejor San Valentín 💕";
-      gif.style.display = "none";
-      yesBtn.style.display = "none";
-      noBtn.style.display = "none";
-      foto.style.display = "block";
-    });
-  </script>
+function mover() {
+  const x = Math.random() * 200;
+  const y = Math.random() * 60;
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+
+// SÍ funciona
+yesBtn.addEventListener("click", () => {
+  pregunta.textContent = "Sabía que dirías que sí 💕";
+  gif.style.display = "none";
+  yesBtn.style.display = "none";
+  noBtn.style.display = "none";
+  foto.style.display = "block";
+});
+</script>
 
 </body>
 </html>
